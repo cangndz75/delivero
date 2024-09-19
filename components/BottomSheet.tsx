@@ -44,7 +44,7 @@ const BottomSheet = forwardRef<Ref>((props, ref) => {
           </TouchableOpacity>
         </View>
         <Text style={styles.subheader}>Your Location</Text>
-        <Link href={"/"} asChild>
+        <Link href={"/(modal)/location-search"} asChild>
           <TouchableOpacity>
             <View style={styles.item}>
               <Ionicons name="location" size={20} color={Colors.primary} />
@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderWidth: 1,
     borderBottomColor: Colors.grey,
-    gap:8,
-    backgroundColor:'#fff'
+    gap: 8,
+    backgroundColor: "#fff",
   },
 });
 
