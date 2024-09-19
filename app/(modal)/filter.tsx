@@ -1,13 +1,39 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  ListRenderItem,
+} from "react-native";
 import React from "react";
 import Colors from "@/constants/Colors";
+import { useNavigation } from "expo-router";
+import { categories } from "@/assets/data/home";
+
+interface Category {
+  name: string;
+  count: number;
+  checked?: boolean;
+}
 
 const Filter = () => {
+  const navigation = useNavigation();
+  const renderItem: ListRenderItem<Category> = ({ item }) => {
+    return (
+      <View>
+        <Text>{item.name}</Text>
+      </View>
+    );
+  };
   return (
     <View style={styles.container}>
-      <Text>Filter</Text>
+      <FlatList data={categories} renderItem={renderItem} />
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.fullButton}>
+        <TouchableOpacity
+          style={styles.fullButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.footerText}>Done</Text>
         </TouchableOpacity>
       </View>
