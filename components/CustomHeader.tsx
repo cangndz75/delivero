@@ -18,13 +18,19 @@ const SearchBar = () => (
   <View style={styles.searchContainer}>
     <View style={styles.searchSection}>
       <View style={styles.searchField}>
-        <Ionicons name="search" size={20} color={Colors.medium} style={styles.searchIcon} />
+        <Ionicons
+          name="search"
+          size={20}
+          color={Colors.medium}
+          style={styles.searchIcon}
+        />
         <TextInput style={styles.input} placeholder="Search" />
       </View>
-      <Link href={"/"} asChild />
-      <TouchableOpacity style={styles.optionButton}>
-        <Ionicons name="options" size={20} color={Colors.primary} />
-      </TouchableOpacity>
+      <Link href={"/(modal)/filter"} asChild>
+        <TouchableOpacity style={styles.optionButton}>
+          <Ionicons name="options" size={20} color={Colors.primary} />
+        </TouchableOpacity>
+      </Link>
     </View>
   </View>
 );
@@ -33,10 +39,10 @@ const CustomHeader = () => {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const openModal = () => {
     bottomSheetRef.current?.present();
-  }
+  };
   return (
     <SafeAreaView style={styles.safeArea}>
-      <BottomSheet  ref={bottomSheetRef}/>
+      <BottomSheet ref={bottomSheetRef} />
       <View style={styles.container}>
         <TouchableOpacity onPress={openModal}>
           <Image source={require("@/assets/images/bike.png")} />
@@ -106,21 +112,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: "center",
   },
-  searchField: { 
+  searchField: {
     flex: 1,
     backgroundColor: Colors.lightGrey,
-    borderRadius:8,
-    flexDirection:'row',
-    alignItems:'center',
+    borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
   },
-  input:{
+  input: {
     padding: 10,
     borderRadius: 8,
-    color:Colors.mediumDark,
+    color: Colors.mediumDark,
   },
-  searchIcon:{
-    paddingLeft:10,
-  }
+  searchIcon: {
+    paddingLeft: 10,
+  },
 });
 
 export default CustomHeader;
